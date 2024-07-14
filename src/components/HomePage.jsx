@@ -9,6 +9,21 @@ const HomePage = ({ account, error, isConnecting, connectWallet, disconnectWalle
     setIsLoaded(true);
   }, []);
 
+  const features = [
+    {
+      title: "Privacy",
+      description: "Our platform ensures your personal information remains confidential. With advanced encryption and anonymization techniques, your identity is protected at all times."
+    },
+    {
+      title: "Security",
+      description: "Built on blockchain technology, our system provides unparalleled security. Every transaction and verification is cryptographically secured and immutable."
+    },
+    {
+      title: "Decentralization",
+      description: "Say goodbye to central authorities. Our decentralized network puts you in control of your identity, eliminating single points of failure and reducing the risk of data breaches."
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-500 to-purple-600 text-white">
       <div className="relative h-screen">
@@ -60,16 +75,16 @@ const HomePage = ({ account, error, isConnecting, connectWallet, disconnectWalle
           transition={{ delay: 0.8, duration: 0.5 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
         >
-          {['Privacy', 'Security', 'Decentralization'].map((feature, index) => (
+          {features.map((feature, index) => (
             <motion.div
-              key={feature}
+              key={feature.title}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-white bg-opacity-10 rounded-lg p-6 backdrop-filter backdrop-blur-lg"
             >
-              <h2 className="text-2xl font-semibold mb-4">{feature}</h2>
+              <h2 className="text-2xl font-semibold mb-4">{feature.title}</h2>
               <p className="text-gray-300">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.
+                {feature.description}
               </p>
             </motion.div>
           ))}
